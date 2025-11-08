@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Properties Pune - Real Estate in Pune</title>
-    <meta name="description" content="Find your dream property in Pune. Residential and commercial properties in Pune.">
+    <title>Properties Pune - Premium Real Estate in Pune</title>
+    <meta name="description" content="Find your dream property in Pune. Premium residential and commercial properties in prime Pune locations.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         * {
@@ -17,18 +17,20 @@
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f8f9fa;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
         }
         
         header {
             background: linear-gradient(135deg, #2c3e50, #3498db);
             color: white;
             padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
         
         .container {
@@ -44,13 +46,18 @@
         }
         
         .logo h1 {
-            font-size: 2rem;
-            margin-bottom: 0.2rem;
+            font-size: 2.2rem;
+            margin-bottom: 0.3rem;
+            background: linear-gradient(45deg, #fff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
         
         .logo p {
             font-size: 1rem;
             opacity: 0.9;
+            font-weight: 300;
         }
         
         nav ul {
@@ -59,69 +66,101 @@
         }
         
         nav ul li {
-            margin-left: 2rem;
+            margin-left: 2.5rem;
         }
         
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: opacity 0.3s;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 25px;
         }
         
         nav ul li a:hover {
-            opacity: 0.8;
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-2px);
         }
         
         .hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 8rem 0 4rem;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 10rem 0 6rem;
             text-align: center;
             color: white;
             margin-top: 80px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 2;
         }
         
         .hero h2 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.4rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 300;
         }
         
         .properties {
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: #2c3e50;
             margin-bottom: 1rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #2c3e50, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .section-title p {
             color: #666;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* Property Table Styles */
-        .property-table {
+        /* Enhanced Property Table Styles */
+        .property-table-container {
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(0,0,0,0.05);
         }
         
-        .property-table table {
+        .property-table {
             width: 100%;
             border-collapse: collapse;
         }
@@ -129,23 +168,36 @@
         .property-table th {
             background: linear-gradient(135deg, #2c3e50, #3498db);
             color: white;
-            padding: 1.2rem;
+            padding: 1.5rem;
             text-align: left;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            border: none;
+        }
+        
+        .property-table th:first-child {
+            border-radius: 20px 0 0 0;
+        }
+        
+        .property-table th:last-child {
+            border-radius: 0 20px 0 0;
         }
         
         .property-table td {
-            padding: 1.2rem;
-            border-bottom: 1px solid #eee;
-            font-size: 0.95rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .property-table tr {
+            transition: all 0.3s ease;
         }
         
         .property-table tr:hover {
-            background: #f8f9fa;
-            transform: translateY(-2px);
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: linear-gradient(135deg, #f8f9ff, #e3f2fd);
+            transform: scale(1.01);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         .property-table tr:last-child td {
@@ -155,10 +207,12 @@
         .sr-number {
             font-weight: bold;
             color: #2c3e50;
-            background: #f8f9fa;
-            padding: 8px 12px;
-            border-radius: 5px;
+            background: linear-gradient(135deg, #e3f2fd, #f8f9ff);
+            padding: 10px 15px;
+            border-radius: 10px;
             text-align: center;
+            display: inline-block;
+            min-width: 40px;
         }
         
         .property-type {
@@ -169,159 +223,214 @@
         
         .property-area {
             color: #666;
+            font-weight: 500;
         }
         
         .property-price {
             color: #e74c3c;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
         
         .property-location {
             color: #27ae60;
-            font-weight: 500;
+            font-weight: 600;
+            background: rgba(39, 174, 96, 0.1);
+            padding: 6px 12px;
+            border-radius: 20px;
+            display: inline-block;
         }
         
         .properties-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
         }
         
         .property-card {
             background: white;
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid #e9ecef;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .property-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
         }
         
         .property-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
         }
         
         .property-card h3 {
             color: #2c3e50;
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
         }
         
         .cta-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             background: linear-gradient(135deg, #e74c3c, #c0392b);
             color: white;
-            padding: 12px 30px;
+            padding: 15px 35px;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
+            border-radius: 50px;
+            font-weight: 600;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(231, 76, 60, 0.4);
         }
 
         .whatsapp-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            padding: 12px 30px;
+            padding: 15px 35px;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
+            border-radius: 50px;
+            font-weight: 600;
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
         }
         
         .whatsapp-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
         
         .contact-section {
             background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
-            padding: 4rem 0;
+            padding: 6rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+        
+        .contact-section .container {
+            position: relative;
+            z-index: 2;
         }
         
         .contact-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
         
         footer {
-            background: #1a252f;
+            background: linear-gradient(135deg, #1a252f, #2c3e50);
             color: white;
             text-align: center;
-            padding: 2rem 0;
+            padding: 3rem 0;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
         }
 
-        /* Floating WhatsApp Button */
+        /* Enhanced Floating WhatsApp Button */
         .whatsapp-float {
             position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25D366;
+            width: 70px;
+            height: 70px;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
-            border-radius: 50px;
+            border-radius: 50%;
             text-align: center;
-            font-size: 30px;
-            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            font-size: 35px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.5);
             z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.3s ease;
-            animation: pulse 2s infinite;
+            animation: float 3s ease-in-out infinite;
+            text-decoration: none;
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(37, 211, 102, 0.7);
         }
 
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 30px rgba(37, 211, 102, 0.8);
-            }
-            100% {
-                box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-            }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .whatsapp-text {
             position: fixed;
-            bottom: 90px;
-            right: 20px;
+            bottom: 110px;
+            right: 25px;
             background: #25D366;
             color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 10px 20px;
+            border-radius: 25px;
             font-size: 14px;
             font-weight: bold;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             z-index: 1000;
             opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .whatsapp-float:hover + .whatsapp-text {
             opacity: 1;
+            transform: translateY(-5px);
         }
         
         @media (max-width: 768px) {
@@ -333,31 +442,74 @@
             nav ul {
                 margin-top: 1rem;
                 justify-content: center;
+                flex-wrap: wrap;
             }
             
             nav ul li {
-                margin: 0 1rem;
+                margin: 0.5rem;
             }
             
             .hero h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             
-            .property-table {
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .property-table-container {
                 overflow-x: auto;
             }
             
-            .property-table table {
-                min-width: 600px;
+            .property-table {
+                min-width: 800px;
             }
 
             .whatsapp-float {
-                width: 50px;
-                height: 50px;
+                width: 60px;
+                height: 60px;
                 bottom: 20px;
                 right: 20px;
-                font-size: 25px;
+                font-size: 30px;
             }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* Additional Enhancements */
+        .feature-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(231, 76, 60, 0.3);
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -368,7 +520,7 @@
        target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
-    <div class="whatsapp-text">Chat with us!</div>
+    <div class="whatsapp-text">Chat with us on WhatsApp!</div>
 
     <header>
         <div class="container">
@@ -408,8 +560,8 @@
             </div>
             
             <!-- Property Table -->
-            <div class="property-table">
-                <table>
+            <div class="property-table-container">
+                <table class="property-table">
                     <thead>
                         <tr>
                             <th>Sr</th>
@@ -430,7 +582,7 @@
                             <td>
                                 <a href="https://wa.me/917070336663?text=Hi!%20I'm%20interested%20in%202%20BHK%20in%20Baner%20Sus%20(810-875%20sqft)%20for%20₹1.07%20Cr" 
                                    class="whatsapp-button" 
-                                   style="padding: 8px 16px; font-size: 0.9rem; display: inline-block; text-decoration: none;"
+                                   style="padding: 10px 20px; font-size: 0.9rem; display: inline-flex; text-decoration: none; align-items: center; gap: 5px;"
                                    target="_blank">
                                     <i class="fab fa-whatsapp"></i> WhatsApp
                                 </a>
@@ -445,7 +597,7 @@
                             <td>
                                 <a href="https://wa.me/917070336663?text=Hi!%20I'm%20interested%20in%203%20BHK%20in%20Baner%20NX%20(1258%20sqft)%20for%20₹1.58%20Cr" 
                                    class="whatsapp-button" 
-                                   style="padding: 8px 16px; font-size: 0.9rem; display: inline-block; text-decoration: none;"
+                                   style="padding: 10px 20px; font-size: 0.9rem; display: inline-flex; text-decoration: none; align-items: center; gap: 5px;"
                                    target="_blank">
                                     <i class="fab fa-whatsapp"></i> WhatsApp
                                 </a>
@@ -460,7 +612,7 @@
                             <td>
                                 <a href="https://wa.me/917070336663?text=Hi!%20I'm%20interested%20in%202%20BHK%20in%20Balewadi%20(869-890%20sqft)%20for%20₹1.30%20Cr" 
                                    class="whatsapp-button" 
-                                   style="padding: 8px 16px; font-size: 0.9rem; display: inline-block; text-decoration: none;"
+                                   style="padding: 10px 20px; font-size: 0.9rem; display: inline-flex; text-decoration: none; align-items: center; gap: 5px;"
                                    target="_blank">
                                     <i class="fab fa-whatsapp"></i> WhatsApp
                                 </a>
@@ -475,7 +627,7 @@
                             <td>
                                 <a href="https://wa.me/917070336663?text=Hi!%20I'm%20interested%20in%202%20BHK%20in%20Wakad%20(798%20sqft)%20for%20₹1.14%20Cr" 
                                    class="whatsapp-button" 
-                                   style="padding: 8px 16px; font-size: 0.9rem; display: inline-block; text-decoration: none;"
+                                   style="padding: 10px 20px; font-size: 0.9rem; display: inline-flex; text-decoration: none; align-items: center; gap: 5px;"
                                    target="_blank">
                                     <i class="fab fa-whatsapp"></i> WhatsApp
                                 </a>
@@ -485,7 +637,7 @@
                 </table>
             </div>
 
-            <!-- Additional Property Cards -->
+            <!-- Featured Properties -->
             <div class="section-title">
                 <h2>Featured Properties</h2>
                 <p>Explore our exclusive collection of premium homes</p>
@@ -493,6 +645,7 @@
             
             <div class="properties-grid">
                 <div class="property-card">
+                    <div class="feature-badge">Featured</div>
                     <h3>Luxury Apartment in Kothrud</h3>
                     <div class="property-price">₹85 Lakhs</div>
                     <p>3 BHK | 1250 sq.ft. | Ready to Move</p>
@@ -504,6 +657,7 @@
                 </div>
 
                 <div class="property-card">
+                    <div class="feature-badge">Premium</div>
                     <h3>Modern Villa in Hinjewadi</h3>
                     <div class="property-price">₹1.2 Crores</div>
                     <p>4 BHK | 2000 sq.ft. | Gated Community</p>
@@ -515,6 +669,7 @@
                 </div>
 
                 <div class="property-card">
+                    <div class="feature-badge">Commercial</div>
                     <h3>Commercial Space in FC Road</h3>
                     <div class="property-price">₹2.5 Crores</div>
                     <p>800 sq.ft. | Prime Location | Good ROI</p>
@@ -531,8 +686,8 @@
     <section class="contact-section" id="contact">
         <div class="container">
             <h2>Ready to Find Your Dream Home?</h2>
-            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Contact us today for personalized property consultation</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <p style="margin-bottom: 3rem; font-size: 1.3rem;">Contact us today for personalized property consultation</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
                 <a href="tel:+917070336663" class="cta-button">
                     <i class="fas fa-phone"></i> Call Now: +91 70703 36663
                 </a>
@@ -547,11 +702,11 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Properties Pune. All rights reserved.</p>
-            <p>Email: Punehomesrealty16@gmail.com | Phone: +91 70703 36663</p>
-            <div style="margin-top: 1rem;">
+            <p style="font-size: 1.2rem; margin-bottom: 1rem;">&copy; 2025 Properties Pune. All rights reserved.</p>
+            <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">Email: Punehomesrealty16@gmail.com | Phone: +91 70703 36663</p>
+            <div style="margin-top: 1.5rem;">
                 <a href="https://wa.me/917070336663" 
-                   style="color: #25D366; text-decoration: none; font-weight: bold;"
+                   style="color: #25D366; text-decoration: none; font-weight: bold; font-size: 1.1rem;"
                    target="_blank">
                     <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
@@ -570,13 +725,27 @@
             });
         });
 
-        // WhatsApp redirect for any remaining buttons
-        document.querySelectorAll('.cta-button').forEach(button => {
-            if (button.textContent.includes('Call Now')) {
-                button.addEventListener('click', function(e) {
-                    // Let the default link behavior work for phone calls
-                });
-            }
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.property-card, .property-table-container').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
         });
     </script>
 </body>
